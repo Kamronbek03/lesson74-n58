@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import "../App.css";
 
 Modal.setAppElement("#root");
 
@@ -21,7 +22,6 @@ const StudentModal = ({ show, onHide, form, onChange, onSubmit, selected }) => (
     }}
   >
     <h2>{selected === null ? "Adding student" : "Editing student"}</h2>{" "}
-    {/* Updated text */}
     <Form onSubmit={onSubmit}>
       <Form.Group className="mb-3">
         <Form.Label>First name</Form.Label>
@@ -63,12 +63,14 @@ const StudentModal = ({ show, onHide, form, onChange, onSubmit, selected }) => (
           <option value="React-58">React-58</option>
         </Form.Select>
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Save
-      </Button>{" "}
-      <Button variant="secondary" onClick={onHide}>
-        Cancel
-      </Button>
+      <div className="buttons">
+        <button className="btn-save" type="submit">
+          Save
+        </button>
+        <button className="btn-cancel" onClick={onHide}>
+          Cancel
+        </button>
+      </div>
     </Form>
   </Modal>
 );

@@ -1,9 +1,9 @@
 import React, { useReducer, useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import AppContext from "./AppContext";
-import StudentModal from "./components/StudentModal"; // Renamed to StudentModal
-import StudentTable from "./components/StudentTable"; // Renamed to StudentTable
+import StudentModal from "./components/StudentModal";
+import StudentTable from "./components/StudentTable";
 import Filter from "./components/Filter";
 import "./App.css";
 
@@ -26,7 +26,7 @@ const reducer = (state, action) => {
     case actionTypes.FETCH_SUCCESS:
       return {
         ...state,
-        students: action.payload, // Changed 'contacts' to 'students'
+        students: action.payload,
         loading: false,
       };
     case actionTypes.FETCH_ERROR:
@@ -35,19 +35,19 @@ const reducer = (state, action) => {
         loading: false,
         error: action.payload,
       };
-    case actionTypes.ADD_STUDENT: // Changed 'ADD_CONTACT' to 'ADD_STUDENT'
+    case actionTypes.ADD_STUDENT:
       return {
         ...state,
         students: [...state.students, action.payload],
       };
-    case actionTypes.DELETE_STUDENT: // Changed 'DELETE_CONTACT' to 'DELETE_STUDENT'
+    case actionTypes.DELETE_STUDENT:
       return {
         ...state,
         students: state.students.filter(
           (student) => student.id !== action.payload
         ),
       };
-    case actionTypes.UPDATE_STUDENT: // Changed 'UPDATE_CONTACT' to 'UPDATE_STUDENT'
+    case actionTypes.UPDATE_STUDENT:
       return {
         ...state,
         students: state.students.map((student) =>
@@ -156,9 +156,9 @@ const App = () => {
         <Row className="mb-3">
           <Col>
             <h1>Student Management</h1>
-            <Button className="button" onClick={() => setShowModal(true)}>
-              <>Add Contact</>
-            </Button>
+            <button className="button" onClick={() => setShowModal(true)}>
+              Add Contact
+            </button>
           </Col>
         </Row>
         <Row className="mb-3">
@@ -169,7 +169,7 @@ const App = () => {
         <Row>
           <Col>
             <StudentTable
-              students={state.students} // Passed 'students' instead of 'contacts'
+              students={state.students}
               onEdit={handleEdit}
               onDelete={handleDelete}
             />
