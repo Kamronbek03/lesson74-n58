@@ -155,7 +155,7 @@ const App = () => {
       <Container className="mt-5">
         <Row className="mb-3">
           <Col>
-            <h1>Contact Management</h1>
+            <h1>Student Management</h1>
             <Button className="button" onClick={() => setShowModal(true)}>
               <>Add Contact</>
             </Button>
